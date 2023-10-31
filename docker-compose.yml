@@ -7,11 +7,10 @@ services:
     expose:
       - "3000"
 
-  admin:
-    build: ./Frontend/admin
+  re-admin:
+    build: ./Frontend/re-admin
     ports:
       - 3001:3001
     expose:
       - "3001"
-    env_file:
-      - ./Frontend/admin/.env.development
+
