@@ -21,7 +21,7 @@ import Ckeditor from "../ckeditor/Ckeditor";
 import { getAllLanguages } from "../../service/LanguageService";
 import { updateBook } from "../../service/BookService";
 
-const ProductNew = ({ }) => {
+const ProductNew = () => {
     const [publishers, setPublishers] = useState([])
     const [collections, setCollections] = useState([])
     const [authors, setAuthors] = useState([])
