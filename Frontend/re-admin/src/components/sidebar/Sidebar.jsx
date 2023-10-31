@@ -126,11 +126,17 @@ const Sidebar = () => {
               dispatch({ type: "LIGHT" });
             }
           }}
-          tabIndex={0} // Add tabIndex to make it focusable
+          tabIndex={0} // Make it focusable
         ></div>
         <div
           className="colorOption"
           onClick={() => dispatch({ type: "DARK" })}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              dispatch({ type: "DARK" });
+            }
+          }}
+          tabIndex={0} // Make it focusable
         ></div>
       </div>
     </div>
