@@ -13,7 +13,7 @@ variables:
 pool:
     vmImage: 'ubuntu-latest'
 stages:
-- stage: Build-backend
+- stage: Build_backend
   jobs:
   - job: Build
     displayName: 'Build Docker Images'
@@ -33,7 +33,7 @@ stages:
         sudo docker compose -f online-book-shop-aws/testDc.yml build --no-cache &&
         exit
         "
-- stage: Build-frontend
+- stage: Build_frontend
   jobs:
   - job: Build
     displayName: 'Build Docker Images'
