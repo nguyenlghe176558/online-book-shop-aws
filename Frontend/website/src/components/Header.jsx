@@ -98,7 +98,7 @@ const Header = ({ cookies, setCookies, removeCookies, cart, cartChange, setCartC
 
     const handleSignIn = (event) => {
         event.preventDefault()
-        const email_regex = /([a-zA-Z0-9._-]+)@([a-zA-Z0-9._-]+)\.([a-zA-Z0-9_-]+)/;
+        const email_regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
         const password_regex = /[a-zA-Z\d]{6,}$/g
         if (formData.si_email === '' || formData.si_password === '' || !email_regex.test(formData.si_email) || !password_regex.test(formData.si_password)) {
             setError((prevData) => ({ ...prevData, loginError: true }))
