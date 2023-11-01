@@ -36,6 +36,11 @@ const Publisher = () => {
                         <div
                             className="deleteButton"
                             onClick={() => handleDelete(params.row.id)}
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter") {
+                                    handleDelete(params.row.id);
+                                }
+                            }}
                         >
                             Delete
                         </div>
