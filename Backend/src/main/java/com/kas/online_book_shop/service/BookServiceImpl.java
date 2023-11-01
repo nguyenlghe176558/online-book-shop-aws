@@ -37,7 +37,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book getBookById(Long id) {
         return bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy sách tương ứng"));
+                .orElseThrow(() -> new ResourceNotFoundException("No corresponding book found"));
     }
 
     @Override
@@ -51,15 +51,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void deleteBook(Long id) {
-        var existingBook = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy sách để xóa"));
+        var existingBook = getBookById(id);
         existingBook.setState(BookState.HIDDEN);
     }
 
     @Override
     public Book updateBook(Book book) {
-        var existingBook = bookRepository.findById(book.getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy sách để câp nhật"));
+        var existingBook = getBookById(book.getId());
         existingBook.setAuthors(book.getAuthors());
         existingBook.setCategory(book.getCategory());
         existingBook.setTitle(book.getTitle());
@@ -107,8 +105,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void addBookToCollection(Long bookId, Long collectionId) {
-        var existingBook = bookRepository.findById(bookId)
-                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy sách tương ứng"));
+        var existingBook = getBookById(bookId);
         var existingCollection = collectionRepository.findById(collectionId)
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy bộ sưu tập tương ứng"));
         if (existingBook.getCollections().contains(existingCollection)) {
@@ -131,8 +128,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void changeBookState(Long id) {
-        var existingBook = bookRepository.findById(id)
-            .orElseThrow( () -> new ResourceNotFoundException("Không tìm thấy sách tương ứng"));
+        var existingBook = getBookById(id);
         if (existingBook.getState() == BookState.ACTIVE)
             existingBook.setState(BookState.HIDDEN);
         existingBook.setState(BookState.ACTIVE);
