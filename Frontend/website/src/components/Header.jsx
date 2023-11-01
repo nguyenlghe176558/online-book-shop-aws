@@ -33,7 +33,7 @@ const Header = ({ cookies, setCookies, removeCookies, cart, cartChange, setCartC
     const [wards, setWards] = useState([])
     const [reset, setReset] = useState(false)
     const [result, setResult] = useState({})
-   
+
     useEffect(() => {
         setProvinceName(null)
         const fetchProvince = async () => {
@@ -233,7 +233,12 @@ const Header = ({ cookies, setCookies, removeCookies, cart, cartChange, setCartC
                                                 <i className="fa-solid fa-user"></i>
                                                 Tài khoản
                                             </Link>
-                                            <a className="popup_form_user_btn2" onClick={logout}>
+                                            <a className="popup_form_user_btn2" onClick={logout}
+                                                onKeyDown={(event) => {
+                                                    if (event.key === "Enter") {
+                                                        logout;
+                                                    }
+                                                }}>
                                                 <i className="fa-solid fa-right-to-bracket"></i>
                                                 Đăng xuất
                                             </a>
