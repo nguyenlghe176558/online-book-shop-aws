@@ -392,7 +392,7 @@ const ProductSingle = () => {
                                 name="size"
                                 onChange={handleInputChange}
                                 value={data.size}
-                                error={data.size < 0}
+                                error={data.size >= 0}
                                 placeholder="Ex: 11.3x17.6 cm"
                             />
                         </Grid>
