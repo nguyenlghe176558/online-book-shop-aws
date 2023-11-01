@@ -498,7 +498,6 @@ input[type=radio] {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  border-radius: 0px;
   background-color: #d51c24;
   color: #fff;
   border-radius: 5px;
