@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Collection = () => {
     const [data, setData] = useState([])
     const [columns, setColumns] = useState([]);
-  
+
 
     const handleDelete = (id) => {
         const confirmBox = window.confirm(
@@ -36,6 +36,11 @@ const Collection = () => {
                         <div
                             className="deleteButton"
                             onClick={() => handleDelete(params.row.id)}
+                            onKeyDown={(event) => {
+                                if (event.key === "Enter") {
+                                    handleDelete(params.row.id);
+                                }
+                            }}
                         >
                             Delete
                         </div>
