@@ -128,7 +128,7 @@ const Header = ({ cookies, setCookies, removeCookies, cart, cartChange, setCartC
             setError((prevData) => ({ ...prevData, emptyError: false }))
         }
         const phone_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g
-        const email_regex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/g
+        const email_regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
         const password_regex = /[a-zA-Z\d]{6,}$/g
         if (!phone_regex.test(formData.su_phone)) {
             setError((prevData) => ({ ...prevData, phoneError: true }))
