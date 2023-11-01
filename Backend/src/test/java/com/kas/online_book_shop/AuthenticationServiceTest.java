@@ -52,29 +52,29 @@ public class AuthenticationServiceTest {
     @Autowired
     AuthenticationService authenticationService;
 
-    // @Test
-    // public void testRegister() throws MessagingException {
-    //     RegisterRequest registerRequest = new RegisterRequest(
-    //             "John Doe",
-    //             "john.doe@example.com",
-    //             "password123",
-    //             "Province",
-    //             "District",
-    //             "Ward",
-    //             "1234567890",
-    //             "123 Main St",
-    //             Role.USER);
+    @Test
+    public void testRegister() throws MessagingException {
+        RegisterRequest registerRequest = new RegisterRequest(
+                "John Doe",
+                "john.doe@example.com",
+                "password123",
+                "Province",
+                "District",
+                "Ward",
+                "1234567890",
+                "123 Main St",
+                Role.USER);
 
-    //     when(userRepository.findByEmail(registerRequest.email())).thenReturn(Optional.empty());
+        when(userRepository.findByEmail(registerRequest.email())).thenReturn(Optional.empty());
 
-    //     when(jwtService.generateToken(any(User.class))).thenReturn("mocked_token");
+        when(jwtService.generateToken(any(User.class))).thenReturn("mocked_token");
 
-    //     doNothing().when(emailService).sendActivationEmail(anyString(), anyString(), anyString());
-    //     authenticationService.register(registerRequest);
+        doNothing().when(emailService).sendActivationEmail(anyString(), anyString(), anyString());
+        authenticationService.register(registerRequest);
 
-    //     verify(userRepository, times(1)).save(any(User.class));
-    //     verify(emailService, times(1)).sendActivationEmail(eq(registerRequest.email()), eq(registerRequest.fullName()),
-    //             eq("mocked_token"));
-    // }
+        verify(userRepository, times(1)).save(any(User.class));
+        verify(emailService, times(1)).sendActivationEmail(eq(registerRequest.email()), eq(registerRequest.fullName()),
+                eq("mocked_token"));
+    }
 
 }
