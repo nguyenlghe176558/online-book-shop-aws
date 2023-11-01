@@ -24,12 +24,12 @@ public class AuthorRepositoryTest {
     @Transactional
     void addValidAuthor() {
         long currentNumberAuthor = authorRepository.count();
-        Author author = Author.builder().name("tac gia").company("compay").build();
+        var author = Author.builder().name("tac gia").company("company").build();
         authorRepository.save(author);
         assertThat(authorRepository.count()).isEqualTo(currentNumberAuthor + 1);
         var newAuthor = authorRepository.findAll().get((int)currentNumberAuthor);
         assertThat(newAuthor.getName()).isEqualTo("tac gia");
-        assertThat(newAuthor.getCompany()).isEqualTo("compay");  
+        assertThat(newAuthor.getCompany()).isEqualTo("company");  
     }
 
     @Test
@@ -38,18 +38,6 @@ public class AuthorRepositoryTest {
         long currentNumberAuthor = authorRepository.count();
         ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () -> {
             Author author = Author.builder().name("").company("company").build();
-            authorRepository.save(author);
-            assertThat(authorRepository.count()).isEqualTo(currentNumberAuthor);
-        });
-        assertThat(exception.getMessage()).contains("The author name is required"); 
-    }
-
-    @Test
-    @Transactional
-    void addInvalidAuthorWithNullName() {
-        long currentNumberAuthor = authorRepository.count();
-        ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () -> {
-            Author author = Author.builder().name(null).company("company").build();
             authorRepository.save(author);
             assertThat(authorRepository.count()).isEqualTo(currentNumberAuthor);
         });

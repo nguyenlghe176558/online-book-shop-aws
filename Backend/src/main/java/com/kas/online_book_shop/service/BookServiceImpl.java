@@ -43,7 +43,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book saveBook(Book book) {
         if (bookRepository.existsByISBN(book.getISBN())) {
-            throw new ISBNDuplicateException("Mã ISBN không thể bị trùng.");
+            throw new ISBNDuplicateException("ISBN can't be duplicated");
         }
         book.setState(BookState.ACTIVE);
         return bookRepository.save(book);

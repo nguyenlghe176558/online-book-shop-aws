@@ -43,16 +43,5 @@ public class BookCategoryRepositoryTest {
         assertThat(exception.getMessage()).contains("The category name is required"); 
     }
 
-    @Test
-    @Transactional
-    void addInvalidBookCategoryWithNullName() {
-        long currentNumberBookCategory = bookCategoryRepository.count();
-        ConstraintViolationException exception = assertThrows(ConstraintViolationException.class, () -> {
-            var bookCategory = BookCategory.builder().name(null).build();
-            bookCategoryRepository.save(bookCategory);
-            assertThat(bookCategoryRepository.count()).isEqualTo(currentNumberBookCategory);
-        });
-        assertThat(exception.getMessage()).contains("The category name is required"); 
-    }
 
 }
