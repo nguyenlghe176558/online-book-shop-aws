@@ -65,12 +65,13 @@ public class BookServiceImpl implements BookService {
         existingBook.setISBN(book.getISBN());
         existingBook.setPage(book.getPage());
         existingBook.setCover(book.getCover());
-        imageRepository.deleteAll(existingBook.getImages());
+        /* imageRepository.deleteAll(existingBook.getImages());
         existingBook.getImages().clear();
         for (Image image : book.getImages()) {
             image.setId(null);
             imageRepository.save(image);
-        }
+        } */
+        existingBook.setImages(book.getImages());
         existingBook.setPrice(book.getPrice());
         existingBook.setDiscount(book.getDiscount());
         existingBook.setLanguage(book.getLanguage());
@@ -78,6 +79,8 @@ public class BookServiceImpl implements BookService {
         existingBook.setStock(book.getStock());
         existingBook.setWeight(book.getWeight());
         existingBook.setState(book.getState());
+        existingBook.setSize(book.getSize());
+        existingBook.setCollections(book.getCollections());
         return existingBook;
     }
 
