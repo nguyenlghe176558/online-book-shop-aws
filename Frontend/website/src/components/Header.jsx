@@ -334,7 +334,11 @@ const Header = ({ cookies, setCookies, removeCookies, cart, cartChange, setCartC
                                                 <>
                                                     <div className="cart-title">
                                                         Giỏ hàng trống
-                                                        <span onClick={toggleSmallCartModel} className="btnCloseQVCart">
+                                                        <span onClick={toggleSmallCartModel} onKeyDown={(event) => {
+                                                            if (event.key === "Enter") {
+                                                                toggleSmallCartModel;
+                                                            }
+                                                        }} className="btnCloseQVCart">
                                                             <i className="fa-regular fa-circle-xmark"></i>
                                                         </span>
                                                     </div>
