@@ -13,4 +13,5 @@ public record RegisterRequest(
     String address,
     Role role) {
 
+
 }
