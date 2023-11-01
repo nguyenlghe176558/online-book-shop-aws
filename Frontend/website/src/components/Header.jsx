@@ -283,7 +283,11 @@ const Header = ({ cookies, setCookies, removeCookies, cart, cartChange, setCartC
                                                     <ul className="no-bullet mt-3">
                                                         {cart?.orderDetails?.map((item, index) => (
                                                             <li key={index} className="cart-item">
-                                                                <span onClick={() => deleteCartItemHandler(item.id)} className="cart__remove"><i className="fa-regular fa-circle-xmark"></i></span>
+                                                                <span onClick={() => deleteCartItemHandler(item.id)} onKeyDown={(event) => {
+                                                                    if (event.key === "Enter") {
+                                                                        deleteCartItemHandler(item.id);
+                                                                    }
+                                                                }} className="cart__remove"><i className="fa-regular fa-circle-xmark"></i></span>
 
                                                                 <Row>
                                                                     <Col lg={4}>
