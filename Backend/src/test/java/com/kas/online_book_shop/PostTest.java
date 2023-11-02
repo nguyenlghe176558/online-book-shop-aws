@@ -2,9 +2,6 @@ package com.kas.online_book_shop;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +13,6 @@ import org.springframework.test.context.ActiveProfiles;
 import com.kas.online_book_shop.enums.AccountState;
 import com.kas.online_book_shop.enums.PostState;
 import com.kas.online_book_shop.enums.Role;
-import com.kas.online_book_shop.exception.ResourceNotFoundException;
 import com.kas.online_book_shop.model.Post;
 import com.kas.online_book_shop.model.PostCategory;
 import com.kas.online_book_shop.model.User;

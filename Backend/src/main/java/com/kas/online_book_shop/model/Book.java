@@ -3,6 +3,8 @@ package com.kas.online_book_shop.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.kas.online_book_shop.enums.BookState;
@@ -25,6 +27,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -44,6 +47,7 @@ public class Book {
     private Long id;
 
     @NotBlank(message = "The title of the book is required")
+    @Length(max = 255, message = "The length is more than 255 characters")
     private String title;
 
     @ManyToOne()
@@ -75,6 +79,7 @@ public class Book {
 
     private LocalDate publicationDate;
     
+    @Length(max = 255, message = "The length is more than 255 characters")
     private String size;
 
     @Min(value = 1, message = "The weight must be at least 1")
@@ -92,10 +97,12 @@ public class Book {
     @Min(value = 1, message = "The page must be at least 1")
     private Integer page;
 
+    @Length(max = 255, message = "The length is more than 255 characters")
     private String cover;
 
     @Column(unique = true)
     @NotBlank(message = "The ISBN is required")
+    @Pattern(regexp = "^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$)[\\d-]+$", message = "The ISBN is invalid")
     private String ISBN;
 
     @Min(value = 0, message = "The discount must be at least 0")
