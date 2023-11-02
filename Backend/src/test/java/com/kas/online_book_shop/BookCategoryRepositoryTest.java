@@ -27,7 +27,7 @@ public class BookCategoryRepositoryTest {
         var bookCategory = BookCategory.builder().name("Category").build();
         bookCategoryRepository.save(bookCategory);
         assertThat(bookCategoryRepository.count()).isEqualTo(currentNumberBookCategory + 1);
-        var newBookCategory = bookCategoryRepository.findAll().get((int)currentNumberBookCategory);
+        var newBookCategory = bookCategoryRepository.findAll().get((int) currentNumberBookCategory);
         assertThat(newBookCategory.getName()).isEqualTo("Category");
     }
 
@@ -40,8 +40,38 @@ public class BookCategoryRepositoryTest {
             bookCategoryRepository.save(bookCategory);
             assertThat(bookCategoryRepository.count()).isEqualTo(currentNumberBookCategory);
         });
-        assertThat(exception.getMessage()).contains("The category name is required"); 
+        assertThat(exception.getMessage()).contains("The category name is required");
     }
 
+    @Test
+    @Transactional
+    void findBookCategoryById() {
+        // Create a new book category
+        var bookCategory = BookCategory.builder().name("Category").build();
+        bookCategoryRepository.save(bookCategory);
 
+        // Retrieve the category by ID
+        var retrievedCategory = bookCategoryRepository.findById(bookCategory.getId()).orElse(null);
+
+        assertThat(retrievedCategory).isNotNull();
+        assertThat(retrievedCategory.getName()).isEqualTo("Category");
+    }
+
+    @Test
+    @Transactional
+    void updateBookCategory() {
+        // Create a new book category
+        var bookCategory = BookCategory.builder().name("Category").build();
+        bookCategoryRepository.save(bookCategory);
+
+        // Modify the category name
+        bookCategory.setName("Updated Category");
+        bookCategoryRepository.save(bookCategory);
+
+        // Retrieve the updated category
+        var updatedCategory = bookCategoryRepository.findById(bookCategory.getId()).orElse(null);
+
+        assertThat(updatedCategory).isNotNull();
+        assertThat(updatedCategory.getName()).isEqualTo("Updated Category");
+    }
 }

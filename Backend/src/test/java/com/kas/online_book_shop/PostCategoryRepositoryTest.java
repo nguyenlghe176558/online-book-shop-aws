@@ -1,6 +1,8 @@
 package com.kas.online_book_shop;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -27,7 +29,7 @@ public class PostCategoryRepositoryTest {
         var postCategory = PostCategory.builder().name("Category").build();
         postCategoryRepository.save(postCategory);
         assertThat(postCategoryRepository.count()).isEqualTo(currentNumberPostCategory + 1);
-        var newPostCategory = postCategoryRepository.findAll().get((int)currentNumberPostCategory);
+        var newPostCategory = postCategoryRepository.findAll().get((int) currentNumberPostCategory);
         assertThat(newPostCategory.getName()).isEqualTo("Category");
     }
 
@@ -40,8 +42,22 @@ public class PostCategoryRepositoryTest {
             postCategoryRepository.save(postCategory);
             assertThat(postCategoryRepository.count()).isEqualTo(currentNumberPostCategory);
         });
-        assertThat(exception.getMessage()).contains("The category name is required"); 
+        assertThat(exception.getMessage()).contains("The category name is required");
     }
 
+    @Test
+    @Transactional
+    void updatePostCategoryName() {
+        var postCategory = PostCategory.builder().name("OriginalCategory").build();
+        postCategoryRepository.save(postCategory);
+
+        // Update the category name
+        postCategory.setName("UpdatedCategory");
+        postCategoryRepository.save(postCategory);
+
+        var updatedCategory = postCategoryRepository.findById(postCategory.getId()).orElse(null);
+        assertNotNull(updatedCategory);
+        assertEquals("UpdatedCategory", updatedCategory.getName());
+    }
 
 }

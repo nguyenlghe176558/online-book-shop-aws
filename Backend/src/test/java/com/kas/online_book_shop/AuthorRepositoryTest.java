@@ -82,5 +82,36 @@ public class AuthorRepositoryTest {
         assertThat(foundAuthors.get(0).getCompany()).isEqualTo("Company3");
     }
 
+    @Test
+    @Transactional
+    void findAuthorsByCompany() {
+        Author author1 = Author.builder().name("Author7").company("Company7").build();
+        Author author2 = Author.builder().name("Author8").company("Company8").build();
+        authorRepository.saveAll(List.of(author1, author2));
 
+        // Find authors by company
+        List<Author> authorsWithCompany7 = authorRepository.findByCompany("Company7");
+
+        // Verify that the correct author(s) with the specified company are found
+        assertThat(authorsWithCompany7).hasSize(1);
+        assertThat(authorsWithCompany7.get(0).getName()).isEqualTo("Author7");
+        assertThat(authorsWithCompany7.get(0).getCompany()).isEqualTo("Company7");
+    }
+
+    @Test
+    @Transactional
+    void findAuthorsByNameAndCompany() {
+        Author author1 = Author.builder().name("Author9").company("Company9").build();
+        Author author2 = Author.builder().name("Author10").company("Company10").build();
+        authorRepository.saveAll(List.of(author1, author2));
+
+        // Find authors by name and company
+        List<Author> authorsWithSpecificNameAndCompany = authorRepository.findByNameAndCompany("Author9", "Company9");
+
+        // Verify that the correct author(s) with the specified name and company are
+        // found
+        assertThat(authorsWithSpecificNameAndCompany).hasSize(1);
+        assertThat(authorsWithSpecificNameAndCompany.get(0).getName()).isEqualTo("Author9");
+        assertThat(authorsWithSpecificNameAndCompany.get(0).getCompany()).isEqualTo("Company9");
+    }
 }

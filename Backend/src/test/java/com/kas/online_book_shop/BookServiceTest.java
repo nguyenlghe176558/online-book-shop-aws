@@ -248,5 +248,4 @@ public class BookServiceTest {
         assertThat(savedCollections).hasSize(1);
         assertThat(savedCollections).contains(collection);
     }
-
 }

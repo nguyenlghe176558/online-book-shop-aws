@@ -35,7 +35,7 @@ public class UserRepositoryTest {
 
     @Test
     @Transactional
-    public void testFindUser() {
+    public void testFindUserByFullNameContainingRoleAndState() {
         // Create a test user with all required properties
         User testUser = new User();
         testUser.setFullName("John Doesalot");
@@ -553,4 +553,5 @@ public class UserRepositoryTest {
         // full length
         assertThat(exception.getMessage()).contains("The phone number must be 10 characters");
     }
+    
 }
