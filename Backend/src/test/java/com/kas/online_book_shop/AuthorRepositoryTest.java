@@ -3,6 +3,8 @@ package com.kas.online_book_shop;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,9 +29,9 @@ public class AuthorRepositoryTest {
         var author = Author.builder().name("tac gia").company("company").build();
         authorRepository.save(author);
         assertThat(authorRepository.count()).isEqualTo(currentNumberAuthor + 1);
-        var newAuthor = authorRepository.findAll().get((int)currentNumberAuthor);
+        var newAuthor = authorRepository.findAll().get((int) currentNumberAuthor);
         assertThat(newAuthor.getName()).isEqualTo("tac gia");
-        assertThat(newAuthor.getCompany()).isEqualTo("company");  
+        assertThat(newAuthor.getCompany()).isEqualTo("company");
     }
 
     @Test
@@ -41,7 +43,44 @@ public class AuthorRepositoryTest {
             authorRepository.save(author);
             assertThat(authorRepository.count()).isEqualTo(currentNumberAuthor);
         });
-        assertThat(exception.getMessage()).contains("The author name is required"); 
+        assertThat(exception.getMessage()).contains("The author name is required");
     }
+
+    @Test
+    @Transactional
+    void updateAuthor() {
+        Author author = Author.builder().name("Author1").company("Company1").build();
+        authorRepository.save(author);
+        long currentNumberAuthor = authorRepository.count();
+
+        // Update the author's name and company
+        Author updatedAuthor = authorRepository.findById(author.getId()).orElse(null);
+        updatedAuthor.setName("Updated Author");
+        updatedAuthor.setCompany("Updated Company");
+        authorRepository.save(updatedAuthor);
+
+        // Verify that the author's information has been updated
+        Author retrievedAuthor = authorRepository.findById(author.getId()).orElse(null);
+        assertThat(retrievedAuthor.getName()).isEqualTo("Updated Author");
+        assertThat(retrievedAuthor.getCompany()).isEqualTo("Updated Company");
+        assertThat(authorRepository.count()).isEqualTo(currentNumberAuthor);
+    }
+
+    @Test
+    @Transactional
+    void findAuthorByName() {
+        Author author1 = Author.builder().name("Author3").company("Company3").build();
+        Author author2 = Author.builder().name("Author4").company("Company4").build();
+        authorRepository.saveAll(List.of(author1, author2));
+
+        // Find authors by name
+        List<Author> foundAuthors = authorRepository.findByName("Author3");
+
+        // Verify that the correct author(s) with the specified name are found
+        assertThat(foundAuthors).hasSize(1);
+        assertThat(foundAuthors.get(0).getName()).isEqualTo("Author3");
+        assertThat(foundAuthors.get(0).getCompany()).isEqualTo("Company3");
+    }
+
 
 }
