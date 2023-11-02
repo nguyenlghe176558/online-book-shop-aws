@@ -3,6 +3,7 @@ package com.kas.online_book_shop.model;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,22 +44,28 @@ public class User implements UserDetails {
     private Long id;
 
     @NotBlank(message = "The full name is required")
+    @Length(min = 1, max = 255, message = "The full name must be between 1 and 255 characters")
     private String fullName;
 
     @NotBlank(message = "The province is required")
+    @Length(min = 1, max = 255, message = "The province must be between 1 and 255 characters")
     private String province;
 
     @NotBlank(message = "The district is required")
+    @Length(min = 1, max = 255, message = "The district must be between 1 and 255 characters")
     private String district;
 
     @NotBlank(message = "The ward is required")
+    @Length(min = 1, max = 255, message = "The ward must be between 1 and 255 characters")
     private String ward;
 
     @NotBlank(message = "The address is required")
+    @Length(min = 1, max = 255, message = "The address must be between 1 and 255 characters")
     private String address;
 
     @NotBlank(message = "The phone is required")
     @Pattern(regexp = "^0\\d{9}$", message = "The phone is invalid")
+    @Length(min = 10, max = 10, message = "The phone number must be 10 characters")
     private String phone;
 
     @Column(unique = true)
