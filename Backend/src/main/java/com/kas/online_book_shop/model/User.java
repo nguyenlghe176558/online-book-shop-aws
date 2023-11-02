@@ -63,6 +63,7 @@ public class User implements UserDetails {
 
     @Column(unique = true)
     @Email(message = "The email is invalid")
+    @NotBlank(message = "The email is required")
     private String email;
 
     @JsonIgnore

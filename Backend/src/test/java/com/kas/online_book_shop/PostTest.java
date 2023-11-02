@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.kas.online_book_shop.model.Post;
 import com.kas.online_book_shop.repository.PostRepository;
 import com.kas.online_book_shop.service.PostServiceImpl;
 

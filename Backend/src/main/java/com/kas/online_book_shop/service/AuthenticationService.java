@@ -41,8 +41,7 @@ public class AuthenticationService {
         public void register(RegisterRequest request) throws MessagingException {
                 userRepository.findByEmail(request.email())
                                 .ifPresent(user -> {
-                                        throw new UserAlreadyExistsException(
-                                                        "Người dùng với email: " + request.email() + " đã tồn tại.");
+                                        throw new UserAlreadyExistsException("Email have been registered");
                                 });
                 var user = User.builder()
                                 .fullName(request.fullName())
@@ -56,7 +55,7 @@ public class AuthenticationService {
                                 .phone(request.phone())
                                 .address(request.address())
                                 .build();
-                userRepository.save(user);
+                userRepository.save(user);//
                 emailService.sendActivationEmail(request.email(), request.fullName(), jwtService.generateToken(user));
                 return;
         }
@@ -110,7 +109,7 @@ public class AuthenticationService {
                                 jwtService.generateToken(existingUser));
                 return;
         }
-        
+
         public AuthenticationResponse changePassword(ChangePasswordRequest request) {
                 var user = userRepository.findByEmail(jwtService.extractUsername(request.token()))
                                 .orElseThrow();
