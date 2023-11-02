@@ -23,6 +23,7 @@ import com.kas.online_book_shop.model.User;
 import com.kas.online_book_shop.repository.PostCategoryRepository;
 import com.kas.online_book_shop.repository.PostRepository;
 import com.kas.online_book_shop.repository.UserRepository;
+import com.kas.online_book_shop.service.PostService;
 import com.kas.online_book_shop.service.PostServiceImpl;
 
 import jakarta.transaction.Transactional;
@@ -33,16 +34,16 @@ import jakarta.transaction.Transactional;
 public class PostTest {
 
         @Autowired
-        private PostServiceImpl postService;
+        PostService postService;
 
         @Autowired
-        private PostRepository postRepository;
+        PostRepository postRepository;
 
         @Autowired
-        private UserRepository userRepository;
+        UserRepository userRepository;
 
         @Autowired
-        private PostCategoryRepository postCategoryRepository;
+        PostCategoryRepository postCategoryRepository;
 
         @Test
         public void testGetAllPosts() {
