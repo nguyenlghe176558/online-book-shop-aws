@@ -87,5 +87,4 @@ public class PublisherRepositoryTest {
         assertThat(retrievedPublisher.getName()).isEqualTo("UpdatedName");
         assertThat(retrievedPublisher.getWebsite()).isEqualTo("http://newwebsite.com");
     }
-
 }

@@ -59,5 +59,4 @@ public class PostCategoryRepositoryTest {
         assertNotNull(updatedCategory);
         assertEquals("UpdatedCategory", updatedCategory.getName());
     }
-
 }

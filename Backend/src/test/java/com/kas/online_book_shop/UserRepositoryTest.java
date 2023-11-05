@@ -553,5 +553,4 @@ public class UserRepositoryTest {
         // full length
         assertThat(exception.getMessage()).contains("The phone number must be 10 characters");
     }
-    
 }
