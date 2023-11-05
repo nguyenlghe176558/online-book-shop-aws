@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8081/api/v1/post";
+const API_URL = "https://backend.sachtructuyen.shop/api/v1/post";
 
 const getAllPostCategories = () => {
-    return axios.get("http://localhost:8081/api/v1/post-category");
+    return axios.get("https://backend.sachtructuyen.shop/api/v1/post-category");
 }
 
 const getPostByCategory = (categoryId, page) => {

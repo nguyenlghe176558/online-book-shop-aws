@@ -1,1 +1,10 @@
-/Users/lgn/BIG DOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/OnlineBookShopApplicationTests.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/BookServiceTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/BookCategoryRepositoryTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/PublisherRepositoryTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/AuthorRepositoryTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/Util.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/UserRepositoryTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/PostCategoryRepositoryTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/PostTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/SliderTest.java
+/Users/lgn/bigDOCS/DEV/online-book-shop-aws/Backend/src/test/java/com/kas/online_book_shop/BookRepositoryTest.java

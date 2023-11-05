@@ -7,7 +7,7 @@ const login = (account) => {
 }
 
 const getUserInfoByEmail = (email) => {
-    return axios.get(`http://localhost:8081/api/v1/user/by-email/${email}`);
+    return axios.get(`https://backend.sachtructuyen.shop/api/v1/user/by-email/${email}`);
 }
 
 

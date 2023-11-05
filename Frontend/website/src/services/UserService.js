@@ -31,7 +31,7 @@ const activateAccount = (token) => {
 }
 
 const changePassword = (data) => {
-    return axios.post("http://localhost:8081/api/v1/auth/change-password", data)
+    return axios.post("https://backend.sachtructuyen.shop/api/v1/auth/change-password", data)
 
 }
 

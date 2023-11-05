@@ -1,1 +1,10 @@
-com/kas/online_book_shop/OnlineBookShopApplicationTests.class
+com/kas/online_book_shop/Util.class
+com/kas/online_book_shop/BookServiceTest.class
+com/kas/online_book_shop/PostTest.class
+com/kas/online_book_shop/AuthorRepositoryTest.class
+com/kas/online_book_shop/BookCategoryRepositoryTest.class
+com/kas/online_book_shop/PublisherRepositoryTest.class
+com/kas/online_book_shop/SliderTest.class
+com/kas/online_book_shop/PostCategoryRepositoryTest.class
+com/kas/online_book_shop/UserRepositoryTest.class
+com/kas/online_book_shop/BookRepositoryTest.class
