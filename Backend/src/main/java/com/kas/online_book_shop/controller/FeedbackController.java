@@ -37,10 +37,8 @@ public class FeedbackController {
     @GetMapping("")
     public ResponseEntity<List<Feedback>> getAllFeedbacks() {
         var feedbacks = feedbackService.getAllFeedbacks();
-        if (feedbacks.isEmpty())
-            return ResponseEntity.noContent().build();
-        else
-            return ResponseEntity.ok(feedbacks);
+
+        return ResponseEntity.ok(feedbacks);
     }
 
     @GetMapping("/sorted-and-paged")

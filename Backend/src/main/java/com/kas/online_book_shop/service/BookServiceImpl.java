@@ -56,6 +56,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public Book updateBook(Book book) {
         var existingBook = getBookById(book.getId());
         existingBook.setAuthors(book.getAuthors());
@@ -65,12 +66,12 @@ public class BookServiceImpl implements BookService {
         existingBook.setISBN(book.getISBN());
         existingBook.setPage(book.getPage());
         existingBook.setCover(book.getCover());
-        /* imageRepository.deleteAll(existingBook.getImages());
+        imageRepository.deleteAll(existingBook.getImages());
         existingBook.getImages().clear();
         for (Image image : book.getImages()) {
             image.setId(null);
             imageRepository.save(image);
-        } */
+        }
         existingBook.setImages(book.getImages());
         existingBook.setPrice(book.getPrice());
         existingBook.setDiscount(book.getDiscount());
@@ -79,7 +80,6 @@ public class BookServiceImpl implements BookService {
         existingBook.setStock(book.getStock());
         existingBook.setWeight(book.getWeight());
         existingBook.setState(book.getState());
-        existingBook.setSize(book.getSize());
         existingBook.setCollections(book.getCollections());
         return existingBook;
     }
@@ -135,7 +135,6 @@ public class BookServiceImpl implements BookService {
         if (existingBook.getState() == BookState.ACTIVE)
             existingBook.setState(BookState.HIDDEN);
         existingBook.setState(BookState.ACTIVE);
-        
     }
 
     
