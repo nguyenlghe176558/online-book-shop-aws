@@ -27,3 +27,6 @@
 .vscode/
 
 /Backend/src/main/resources/application.properties
+Backend/target/classes/
+
+*.class

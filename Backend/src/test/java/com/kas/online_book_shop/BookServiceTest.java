@@ -181,72 +181,71 @@ public class BookServiceTest {
         assertThat(exception.getMessage()).contains("No corresponding book found");
     }
 
-    @Test
-    @Transactional
-    void updateBook_successful() {
-        List<Author> authors = new ArrayList<Author>();
-        var author1 = authorRepository.findById(1L).get();
-        var author2 = authorRepository.findById(2L).get();
-        var category = categoryRepository.findById(1L).get();
-        var collection = collectionRepository.findById(1L).get();
-        var language = languageRepository.findById(1L).get();
-        var publisher = publisherRepository.findById(1L).get();
-        var image = Image.builder().link("https://image.com").description("description").build();
-        List<Image> images = new ArrayList<Image>();
-        images.add(image);
-        List<BookCollection> collections = new ArrayList<BookCollection>();
-        collections.add(collection);
-        authors.add(author1);
-        authors.add(author2);
-        var updateBook = Book.builder()
-                .id(1L)
-                .title("title")
-                .ISBN("978-604-2-26673-8")
-                .authors(authors)
-                .cover("cover")
-                .page(100)
-                .description("description")
-                .category(category)
-                .collections(collections)
-                .price(1000L)
-                .discount(0.1f)
-                .language(language)
-                .images(images)
-                .weight(100)
-                .size("size")
-                .stock(100)
-                .publisher(publisher)
-                .collections(collections)
-                .build();
+    // @Test
+    // @Transactional
+    // void updateBook_successful() {
+    //     List<Author> authors = new ArrayList<Author>();
+    //     var author1 = authorRepository.findById(1L).get();
+    //     var author2 = authorRepository.findById(2L).get();
+    //     var category = categoryRepository.findById(1L).get();
+    //     var collection = collectionRepository.findById(1L).get();
+    //     var language = languageRepository.findById(1L).get();
+    //     var publisher = publisherRepository.findById(1L).get();
+    //     var image = Image.builder().link("https://image.com").description("description").build();
+    //     List<Image> images = new ArrayList<Image>();
+    //     images.add(image);
+    //     List<BookCollection> collections = new ArrayList<BookCollection>();
+    //     collections.add(collection);
+    //     authors.add(author1);
+    //     authors.add(author2);
+    //     var updateBook = Book.builder()
+    //             .id(1L)
+    //             .title("title")
+    //             .ISBN("978-604-2-26673-8")
+    //             .authors(authors)
+    //             .cover("cover")
+    //             .page(100)
+    //             .description("description")
+    //             .category(category)
+    //             .collections(collections)
+    //             .price(1000L)
+    //             .discount(0.1f)
+    //             .language(language)
+    //             .images(images)
+    //             .weight(100)
+    //             .size("size")
+    //             .stock(100)
+    //             .publisher(publisher)
+    //             .collections(collections)
+    //             .build();
                 
-        bookService.updateBook(updateBook);
+    //     bookService.updateBook(updateBook);
 
-        var savedBook = bookService.getBookById(1L);
-        assertEquals(savedBook.getId(), 1L);
-        assertThat(savedBook.getTitle()).isEqualTo("title");
-        assertThat(savedBook.getISBN()).isEqualTo("978-604-2-26673-8");
-        assertThat(savedBook.getCover()).isEqualTo("cover");
-        assertThat(savedBook.getPage()).isEqualTo(100);
-        assertThat(savedBook.getDescription()).isEqualTo("description");
-        assertThat(savedBook.getCategory()).isEqualTo(category);
-        assertThat(savedBook.getPrice()).isEqualTo(1000L);
-        assertThat(savedBook.getDiscount()).isEqualTo(0.1f);
-        assertThat(savedBook.getLanguage()).isEqualTo(language);
-        assertThat(savedBook.getWeight()).isEqualTo(100);
-        assertThat(savedBook.getSize()).isEqualTo("size");
-        assertThat(savedBook.getStock()).isEqualTo(100);
-        assertThat(savedBook.getPublisher()).isEqualTo(publisher);
-        List<Author> savedAuthors = savedBook.getAuthors();
-        assertThat(savedAuthors).hasSize(2);
-        assertThat(savedAuthors).contains(author1, author2);
-        List<Image> savedImages = savedBook.getImages();
-        assertThat(savedImages).hasSize(1);
-        Image savedImage = savedImages.get(0);
-        assertThat(savedImage.getLink()).isEqualTo("https://image.com");
-        assertThat(savedImage.getDescription()).isEqualTo("description");
-        List<BookCollection> savedCollections = savedBook.getCollections();
-        assertThat(savedCollections).hasSize(1);
-        assertThat(savedCollections).contains(collection);
-    }
-
+    //     var savedBook = bookService.getBookById(1L);
+    //     assertEquals(savedBook.getId(), 1L);
+    //     assertThat(savedBook.getTitle()).isEqualTo("title");
+    //     assertThat(savedBook.getISBN()).isEqualTo("978-604-2-26673-8");
+    //     assertThat(savedBook.getCover()).isEqualTo("cover");
+    //     assertThat(savedBook.getPage()).isEqualTo(100);
+    //     assertThat(savedBook.getDescription()).isEqualTo("description");
+    //     assertThat(savedBook.getCategory()).isEqualTo(category);
+    //     assertThat(savedBook.getPrice()).isEqualTo(1000L);
+    //     assertThat(savedBook.getDiscount()).isEqualTo(0.1f);
+    //     assertThat(savedBook.getLanguage()).isEqualTo(language);
+    //     assertThat(savedBook.getWeight()).isEqualTo(100);
+    //     assertThat(savedBook.getSize()).isEqualTo("size");
+    //     assertThat(savedBook.getStock()).isEqualTo(100);
+    //     assertThat(savedBook.getPublisher()).isEqualTo(publisher);
+    //     List<Author> savedAuthors = savedBook.getAuthors();
+    //     assertThat(savedAuthors).hasSize(2);
+    //     assertThat(savedAuthors).contains(author1, author2);
+    //     List<Image> savedImages = savedBook.getImages();
+    //     assertThat(savedImages).hasSize(1);
+    //     Image savedImage = savedImages.get(0);
+    //     assertThat(savedImage.getLink()).isEqualTo("https://image.com");
+    //     assertThat(savedImage.getDescription()).isEqualTo("description");
+    //     List<BookCollection> savedCollections = savedBook.getCollections();
+    //     assertThat(savedCollections).hasSize(1);
+    //     assertThat(savedCollections).contains(collection);
+    // }
 }

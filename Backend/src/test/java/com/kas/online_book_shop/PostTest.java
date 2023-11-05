@@ -214,5 +214,4 @@ public class PostTest {
                 assertNotNull(deletedPost);
                 assertEquals(PostState.DELETED, deletedPost.getState());
         }
-
 }

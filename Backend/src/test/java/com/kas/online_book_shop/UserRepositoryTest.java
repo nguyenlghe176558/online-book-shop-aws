@@ -35,7 +35,7 @@ public class UserRepositoryTest {
 
     @Test
     @Transactional
-    public void testFindUser() {
+    public void testFindUserByFullNameContainingRoleAndState() {
         // Create a test user with all required properties
         User testUser = new User();
         testUser.setFullName("John Doesalot");
