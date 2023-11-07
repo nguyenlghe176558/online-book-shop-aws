@@ -88,4 +88,11 @@ public class FeedbackController {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/answer")
+    public ResponseEntity<Void> answerFeedback(   
+    @RequestBody Feedback feedback) {
+        feedbackService.answerFeedback(feedback);
+        return ResponseEntity.noContent().build();
+    }
+
 }

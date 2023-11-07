@@ -11,6 +11,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ChatIcon from '@mui/icons-material/Chat';
 import ArticleIcon from '@mui/icons-material/Article';
 import QueueIcon from '@mui/icons-material/Queue';
 import SlideshowIcon from '@mui/icons-material/Slideshow';
@@ -19,15 +20,14 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import styled from "@emotion/styled";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
   const authContext = useContext(AuthContext);
-
+  
   const logout = () => {
     authContext.dispatch({ type: "LOGOUT" });
-  };
+  }
 
   return (
     <div className="sidebar">
@@ -58,28 +58,28 @@ const Sidebar = () => {
             </li>
           </Link>
           <Link to="/orders" style={{ textDecoration: "none" }}>
-            <li>
-              <CreditCardIcon className="icon" />
-              <span>Orders</span>
-            </li>
+          <li>
+            <CreditCardIcon className="icon" />
+            <span>Orders</span>
+          </li>
           </Link>
           <li>
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>
-          </li>
-          <Link to={"/collections"} style={{ textDecoration: "none" }}>
+          </li> 
+          <Link to={"/collections"} style={{textDecoration: 'none'}}>
             <li>
               <QueueIcon className="icon" />
               <span>Collections</span>
             </li>
           </Link>
-          <Link to={"/sliders"} style={{ textDecoration: "none" }}>
+          <Link to={"/sliders"} style={{textDecoration: 'none'}}>
             <li>
               <SlideshowIcon className="icon" />
               <span>Sliders</span>
             </li>
           </Link>
-          <Link to={"/publishers"} style={{ textDecoration: "none" }}>
+          <Link to={"/publishers"} style={{textDecoration: 'none'}}>
             <li>
               <AssuredWorkloadIcon className="icon" />
               <span>Publishers</span>
@@ -89,6 +89,12 @@ const Sidebar = () => {
             <li>
               <ArticleIcon className="icon" />
               <span>Posts</span>
+            </li>
+          </Link>
+          <Link to={'/feedbacks'} style={{textDecoration: 'none'}}>
+            <li>
+              <ChatIcon className="icon" />
+              <span>Feedbacks</span>
             </li>
           </Link>
           <p className="title">USEFUL</p>
@@ -128,22 +134,10 @@ const Sidebar = () => {
         <div
           className="colorOption"
           onClick={() => dispatch({ type: "LIGHT" })}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              dispatch({ type: "LIGHT" });
-            }
-          }}
-          tabIndex={0} // Make it focusable
         ></div>
         <div
           className="colorOption"
           onClick={() => dispatch({ type: "DARK" })}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              dispatch({ type: "DARK" });
-            }
-          }}
-          tabIndex={0} // Make it focusable
         ></div>
       </div>
     </div>
