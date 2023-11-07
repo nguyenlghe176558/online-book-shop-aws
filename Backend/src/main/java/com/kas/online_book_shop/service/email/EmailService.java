@@ -68,7 +68,7 @@ public class EmailService {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-        String url = "http://localhost:3000/account/";
+        String url = "https://sachtructuyen.shop/account/";
 
         String html = htmlContent.setHtmlConten(fullName, "Kiểm tra đơn hàng", url,
                 "Cảm ơn bạn đã đặt hàng Sách Trực Tuyến",
@@ -97,7 +97,8 @@ public class EmailService {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-        String url = "http://localhost:3000/account/";
+        //String url = "http://localhost:3000/account/";
+        String url = "https://sachtructuyen.shop/account/";
 
         String html = htmlContent.setHtmlConten(fullName, "Kiểm tra đơn hàng", url,
                 "Đơn hàng của bạn " + orderState,

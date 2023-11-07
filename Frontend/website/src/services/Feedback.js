@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8081/api/v1/feedback";
+const API_URL = "https://backend.sachtructuyen.shop/api/v1/feedback";
 
 const getAllFeedback = () => {
     return axios.get(API_URL);
@@ -15,7 +15,7 @@ const answerFeedback = (feedback) => {
 }
 
 const getFeedbackByBookId = (bookId) => {
-    return axios.get(`http://localhost:8081/api/v1/feedback/by-book?book=${bookId}&sortBy=id&page=0&size=10&sortOrder=asc`);
+    return axios.get(`https://backend.sachtructuyen.shop/api/v1/feedback/by-book?book=${bookId}&sortBy=id&page=0&size=10&sortOrder=asc`);
 }
 
 export {getAllFeedback, getFeedbackById, answerFeedback, getFeedbackByBookId}

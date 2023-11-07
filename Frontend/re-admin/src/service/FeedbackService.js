@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const FEEDBACK_API_BASE_URL = "http://localhost:8081/api/v1/feedback";
+const FEEDBACK_API_BASE_URL = "https://backend.sachtructuyen.shop/api/v1/feedback";
 
 const getAllFeedbacks = () => {
     return axios.get(FEEDBACK_API_BASE_URL);
