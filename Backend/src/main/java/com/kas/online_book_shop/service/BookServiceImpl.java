@@ -80,6 +80,7 @@ public class BookServiceImpl implements BookService {
         existingBook.setStock(book.getStock());
         existingBook.setWeight(book.getWeight());
         existingBook.setState(book.getState());
+        existingBook.setSize(book.getSize());
         existingBook.setCollections(book.getCollections());
         return existingBook;
     }
@@ -131,8 +132,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void changeBookState(Long id) {
-        var existingBook = getBookById(id);
-        if (existingBook.getState() == BookState.ACTIVE)
+        var existingBook = bookRepository.findById(id)
+            .orElseThrow( () -> new ResourceNotFoundException("Không tìm thấy sách tương ứng"));
+        if (existingBook.getState().equals(BookState.ACTIVE))
             existingBook.setState(BookState.HIDDEN);
         existingBook.setState(BookState.ACTIVE);
     }
