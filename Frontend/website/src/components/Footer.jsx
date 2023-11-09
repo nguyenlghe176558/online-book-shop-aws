@@ -69,7 +69,7 @@ const Footer = () => {
                                     Số điện thoại: (+84) 123454321
                                 </div>
                                 <div className='ft-contact-email'>
-                                    Email: bookstore_cskh@gmail.com
+                                    Email: sachtructuyen123@gmail.com
                                 </div>
                             </div>
                         </Col>
