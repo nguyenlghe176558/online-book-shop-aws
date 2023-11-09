@@ -26,8 +26,6 @@ stages:
     - script: |
         sudo chmod 400 $(sshKey.secureFilePath)
         ssh -o StrictHostKeyChecking=no -i $(sshKey.secureFilePath) $(vmUsername1)@$(vmIp1) "
-        sudo apt-get update &&
-        yes | sudo apt-get upgrade && 
         sudo docker start 30fb216fa855 &&
         yes | sudo docker system prune &&
         cd online-book-shop-aws && 
@@ -49,8 +47,6 @@ stages:
     - script: |
         sudo chmod 400 $(sshKey.secureFilePath)
         ssh -o StrictHostKeyChecking=no -i $(sshKey.secureFilePath) $(vmUsername1)@$(feVmIp1) "
-        sudo apt-get update &&
-        yes | sudo apt-get upgrade && 
         yes | sudo docker system prune &&
         cd online-book-shop-aws && 
         git pull origin develop && 
@@ -72,15 +68,11 @@ stages:
     - script: |
         sudo chmod 400 $(sshKey.secureFilePath)
         ssh -o StrictHostKeyChecking=no -i $(sshKey.secureFilePath) $(vmUsername1)@$(vmIp1) "
-        sudo apt-get update &&
-        yes | sudo apt-get upgrade && 
         sudo docker start 30fb216fa855 &&
         sudo docker compose -f online-book-shop-aws/testDc.yml down &&
         exit
         "
         ssh -o StrictHostKeyChecking=no -i $(sshKey.secureFilePath) $(vmUsername1)@$(feVmIp1) "
-        sudo apt-get update &&
-        yes | sudo apt-get upgrade && 
         sudo docker compose -f online-book-shop-aws/docker-compose.yml down &&
         exit
         "
