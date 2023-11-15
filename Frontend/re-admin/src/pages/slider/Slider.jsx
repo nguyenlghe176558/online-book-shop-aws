@@ -21,39 +21,26 @@ const Slider = () => {
     });
   };
 
-    useEffect(() => {
-        getAllSliders().then((res) => {
-            setData(res.data)
-            setColumns(sliderColumns.concat(actionColumn))
-        })
-    }, [])
-
-    return (
-        <div className="list">
-            <Sidebar />
-            <div className="listContainer">
-                <Navbar />
-                <div className="datatable">
-                    <div className="datatableTitle">
-                        Manage Sliders
-                        <Link to={`/sliders/new`} className="link">
-                            Add New Slider
-                        </Link>
-                    </div>
-                    <DataGrid
-                        className="datagrid"
-                        rows={data}
-                        columns={columns}
-                        pageSize={9}
-                        rowsPerPageOptions={[9]}
-                    />
-                </div>
-            </div>
-          </div>
-        );
-      },
+  const actionColumn = {
+    field: "actions",
+    headerName: "Actions",
+    width: 150,
+    renderCell: (params) => {
+      return (
+        <>
+          <Link to={`/sliders/${params.row._id}`} className="link">
+            <button className="datatableEdit">Edit</button>
+          </Link>
+          <button
+            className="datatableDelete"
+            onClick={() => handleDelete(params.row._id)}
+          >
+            Delete
+          </button>
+        </>
+      );
     },
-  ];
+  };
 
   useEffect(() => {
     getAllSliders().then((res) => {
