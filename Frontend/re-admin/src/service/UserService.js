@@ -11,11 +11,11 @@ const getUserInfoByEmail = (email) => {
 }
 
 const getAllUser = async () => {
-    return axios.get(`http://localhost:8081/api/v1/user/customer`);
+    return axios.get(`https://backend.sachtructuyen.shop/api/v1/user/customer`);
 }
 
 const changePassword = (data) => {
-    return axios.post("http://localhost:8081/api/v1/auth/change-password", data)
+    return axios.post("https://backend.sachtructuyen.shop/api/v1/auth/change-password", data)
 
 }
 
