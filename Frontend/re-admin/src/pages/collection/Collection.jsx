@@ -64,9 +64,9 @@ const Collection = () => {
                 <Navbar />
                 <div className="datatable">
                     <div className="datatableTitle">
-                        Collections
+                        Manage Book Collections
                         <Link to={`/collections/new`} className="link">
-                            Add New
+                            Add New Collection
                         </Link>
                     </div>
                     <DataGrid

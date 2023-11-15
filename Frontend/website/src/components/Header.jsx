@@ -179,10 +179,10 @@ const Header = ({ cookies, setCookies, removeCookies, cart, cartChange, setCartC
                                 <a href="https://www.facebook.com/is.mycampione/">
                                     <i className="fa-brands fa-facebook-f"></i>
                                 </a>
-                                <a href="https://www.facebook.com/is.mycampione/">
+                                <a href="https://www.instagram.com/?hl=en">
                                     <i className="fa-brands fa-instagram"></i>
                                 </a>
-                                <a href="https://www.facebook.com/is.mycampione/">
+                                <a href="https://www.youtube.com/">
                                     <i className="fa-brands fa-youtube"></i>
                                 </a>
                             </div>

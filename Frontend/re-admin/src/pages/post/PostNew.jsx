@@ -66,7 +66,7 @@ const PostNew = ({currentUser}) => {
                     <Navbar />
                     <div className="wrapper">
                         <div className="function spacing">
-                            <h3>Update Posts</h3>
+                            <h3>Add Posts</h3>
                             <div className="btn-list">
                                 {error && <span style={{ color: 'red', marginRight: '20px' }}>Error</span>}
                                 <button onClick={handleCancel} className="cancel">Cancel</button>
@@ -75,7 +75,7 @@ const PostNew = ({currentUser}) => {
                         </div>
 
                         <Grid container spacing={2} className='spacing'>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={12}>
                                 <TextField
                                     required
                                     id="title"
@@ -87,7 +87,7 @@ const PostNew = ({currentUser}) => {
                                     onChange={(e) => setData({ ...data, title: e.target.value })}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={12}>
                                 <TextField
                                     required
                                     id="brief"
@@ -99,7 +99,7 @@ const PostNew = ({currentUser}) => {
                                     onChange={(e) => setData({ ...data, brief: e.target.value })}
                                 />
                             </Grid>
-                            <Grid item xs={12} sm={6}>
+                            <Grid item xs={12} sm={12}>
                                 <TextField
                                     required
                                     id="thumbnail"

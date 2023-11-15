@@ -21,31 +21,33 @@ const Slider = () => {
     });
   };
 
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Action",
-      width: 230,
-      renderCell: (params) => {
-        return (
-          <div className="cellAction">
-            <Link
-              to={`/sliders/${params.row.id}`}
-              style={{ textDecoration: "none" }}
-            >
-              <div className="viewButton">Update</div>
-            </Link>
-            <div
-              className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
-              onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  handleDelete(params.row.id);
-                }
-              }}
-              tabIndex={0} // Make it focusable
-            >
-              Delete
+    useEffect(() => {
+        getAllSliders().then((res) => {
+            setData(res.data)
+            setColumns(sliderColumns.concat(actionColumn))
+        })
+    }, [])
+
+    return (
+        <div className="list">
+            <Sidebar />
+            <div className="listContainer">
+                <Navbar />
+                <div className="datatable">
+                    <div className="datatableTitle">
+                        Manage Sliders
+                        <Link to={`/sliders/new`} className="link">
+                            Add New Slider
+                        </Link>
+                    </div>
+                    <DataGrid
+                        className="datagrid"
+                        rows={data}
+                        columns={columns}
+                        pageSize={9}
+                        rowsPerPageOptions={[9]}
+                    />
+                </div>
             </div>
           </div>
         );
