@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = process.env.BACKEND_API_URL + "/feedback";
+const API_URL = "https://backend.sachtructuyen.shop/api/v1/feedback";
 
 const getAllFeedback = () => {
     return axios.get(API_URL);

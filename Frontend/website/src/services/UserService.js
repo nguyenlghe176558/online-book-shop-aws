@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ACCOUNT_BASE_URL = process.env.BACKEND_API_URL + "/auth/";
+const ACCOUNT_BASE_URL = "https://backend.sachtructuyen.shop/api/v1/auth/";
 
 const createAccount = (account) => {
     return axios.post(ACCOUNT_BASE_URL + 'register', account);
@@ -11,11 +11,11 @@ const login = (account) => {
 }
 
 const getUserInfoByEmail = (email) => {
-    return axios.get(process.env.BACKEND_API_URL + `/user/by-email/${email}`);
+    return axios.get(`https://backend.sachtructuyen.shop/api/v1/user/by-email/${email}`);
 }
 
 const updateUser = (profile) => {
-    return axios.put(process.env.BACKEND_API_URL + "/user", profile);
+    return axios.put("https://backend.sachtructuyen.shop/api/v1/user", profile);
 }
 
 const forgetPassword = (email) => {
@@ -27,11 +27,11 @@ const resetPassword = (resetData) => {
 }
 
 const activateAccount = (token) => {
-    return axios.post(process.env.BACKEND_API_URL + "/activation", token)
+    return axios.post("https://backend.sachtructuyen.shop/api/v1/auth/activation", token)
 }
 
 const changePassword = (data) => {
-    return axios.post(process.env.BACKEND_API_URL + "/change-password", data)
+    return axios.post("https://backend.sachtructuyen.shop/api/v1/auth/change-password", data)
 
 }
 

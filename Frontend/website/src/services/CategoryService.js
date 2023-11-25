@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const CATEGORIES_API_URL = process.env.BACKEND_API_URL + '/book-category'
-
+const CATEGORIES_API_URL = 'https://backend.sachtructuyen.shop/api/v1/book-category'
 const getCategories = () => {
     return axios.get(CATEGORIES_API_URL)
 }

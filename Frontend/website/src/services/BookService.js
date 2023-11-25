@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BOOK_API_BASE_URL = process.env.BACKEND_API_URL + "/book"
+const BOOK_API_BASE_URL = "https://backend.sachtructuyen.shop/api/v1/book"
 
 const getBook = () => {
     return axios.get(BOOK_API_BASE_URL)
