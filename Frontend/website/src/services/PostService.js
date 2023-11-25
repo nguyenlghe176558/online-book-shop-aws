@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = `${process.env.BACKEND_API_URL}/post`;
+const API_URL = process.env.BACKEND_API_URL + "/post";
 
 const getAllPostCategories = () => {
     return axios.get(process.env.BACKEND_API_URL + "/post-category");
