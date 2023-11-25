@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "https://backend.sachtructuyen.shop/api/v1/post";
+const API_URL = process.env.BACKEND_API_URL + "/post";
 
 const getAllPostCategories = () => {
-    return axios.get("https://backend.sachtructuyen.shop/api/v1/post-category");
+    return axios.get(process.env.BACKEND_API_URL + "/post-category");
 }
 
 const getPostByCategory = (categoryId, page) => {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CART_API_BASE_URL = "https://backend.sachtructuyen.shop/api/v1/cart";
+const CART_API_BASE_URL = process.env.BACKEND_API_URL + "/cart";
 
 const getAllCartByUserId = (id) => {
     return axios.get(CART_API_BASE_URL + '/by-user/' + id);

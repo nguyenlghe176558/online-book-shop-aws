@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const COLLECTION_URL_API = "https://backend.sachtructuyen.shop/api/v1/book-collection"
+const COLLECTION_URL_API = process.env.BACKEND_API_URL + "/book-collection"
 
 const getCollections = () => {
     return axios.get(COLLECTION_URL_API)
